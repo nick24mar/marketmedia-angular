@@ -1,10 +1,13 @@
+using marketmedia.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace marketmedia.Persistence
 {
     public class MarketMediaDbContext : DbContext
     {
-        public MarketMediaDbContext(DbContextOptions<DbContext> options)
+        public DbSet<Item> Items { get; set; }
+
+        public MarketMediaDbContext(DbContextOptions<MarketMediaDbContext> options)
           : base(options) { }
     }
 }
