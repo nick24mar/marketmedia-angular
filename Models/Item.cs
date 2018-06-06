@@ -14,5 +14,9 @@ namespace marketmedia.Models
         public double Price { get; set; }
 
         public DateTime DatePosted { get; set; }
+
+        public Category Category { get; set; }
+
+        public int CategoryId { get; set; }
     }
 }
