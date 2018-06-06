@@ -57,6 +57,7 @@ namespace marketmedia.Controllers
             var item = mapper.Map<ItemResource, Item>(itemResource);
 
             item.DatePosted = DateTime.Now;
+            item.LastUpdated = DateTime.Now;
 
             context.Items.Add(item);
             await context.SaveChangesAsync();
@@ -78,6 +79,8 @@ namespace marketmedia.Controllers
             if (itemInDb == null)
               return NotFound();
 
+            itemResource.DatePosted = itemInDb.DatePosted;
+            itemInDb.LastUpdated = DateTime.Now;
             mapper.Map<ItemResource, Item>(itemResource, itemInDb);
             await context.SaveChangesAsync();
 
