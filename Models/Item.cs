@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace marketmedia.Models
@@ -9,6 +10,9 @@ namespace marketmedia.Models
         [Required]
         [StringLength(255)]
         public string Name { get; set; }
+
         public double Price { get; set; }
+
+        public DateTime DatePosted { get; set; }
     }
 }

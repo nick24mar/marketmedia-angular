@@ -11,9 +11,10 @@ using System;
 namespace marketmedia.Migrations
 {
     [DbContext(typeof(MarketMediaDbContext))]
-    partial class MarketMediaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180606170443_AddDatePostedToItem")]
+    partial class AddDatePostedToItem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
