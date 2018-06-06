@@ -56,6 +56,8 @@ namespace marketmedia.Controllers
 
             var item = mapper.Map<ItemResource, Item>(itemResource);
 
+            item.DatePosted = DateTime.Now;
+
             context.Items.Add(item);
             await context.SaveChangesAsync();
 
