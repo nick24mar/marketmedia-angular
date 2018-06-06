@@ -1,0 +1,10 @@
+E:\Projects\marketmedia\bin\Debug\netcoreapp2.0\marketmedia.deps.json
+E:\Projects\marketmedia\bin\Debug\netcoreapp2.0\marketmedia.runtimeconfig.json
+E:\Projects\marketmedia\bin\Debug\netcoreapp2.0\marketmedia.runtimeconfig.dev.json
+E:\Projects\marketmedia\bin\Debug\netcoreapp2.0\marketmedia.dll
+E:\Projects\marketmedia\bin\Debug\netcoreapp2.0\marketmedia.pdb
+E:\Projects\marketmedia\obj\Debug\netcoreapp2.0\marketmedia.csproj.CoreCompileInputs.cache
+E:\Projects\marketmedia\obj\Debug\netcoreapp2.0\marketmedia.AssemblyInfoInputs.cache
+E:\Projects\marketmedia\obj\Debug\netcoreapp2.0\marketmedia.AssemblyInfo.cs
+E:\Projects\marketmedia\obj\Debug\netcoreapp2.0\marketmedia.dll
+E:\Projects\marketmedia\obj\Debug\netcoreapp2.0\marketmedia.pdb
