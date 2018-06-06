@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using marketmedia.Controllers.Resource;
 using marketmedia.Models;
 using marketmedia.Persistence;
 using Microsoft.AspNetCore.Mvc;
@@ -13,45 +15,87 @@ namespace marketmedia.Controllers
     public class ItemsController : Controller
     {
 
-      private readonly MarketMediaDbContext context;
+        private readonly MarketMediaDbContext context;
+        private readonly IMapper mapper;
 
-      public ItemsController(MarketMediaDbContext context)
-      {
-          this.context = context;
-      }
+        public ItemsController(MarketMediaDbContext context, IMapper mapper)
+        {
+            this.context = context;
+            this.mapper = mapper;
+        }
 
-      // GET api/items
-      [HttpGet]
-      public async Task<IEnumerable<Item>> GetItems()
-      {
-          var items = await context.Items.ToListAsync();
+        // GET api/items
+        [HttpGet]
+        public async Task<IEnumerable<ItemResource>> GetItems()
+        {
+            var items = await context.Items.ToListAsync();
+            var mappedItems = mapper.Map<List<Item>, List<ItemResource>>(items);
 
-          return items;
-      }
+            return mappedItems;
+        }
 
-      /* // GET api/items/5
-      [HttpGet("{id}")]
-      public string Get(int id)
-      {
-          return "value";
-      }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetItem(int id)
+        {
+            var item = await context.Items.SingleOrDefaultAsync(i => i.Id == id);
 
-      // POST api/items
-      [HttpPost]
-      public void Post([FromBody]string value)
-      {
-      }
+            if (item == null)
+                return NotFound();
 
-      // PUT api/items/5
-      [HttpPut("{id}")]
-      public void Put(int id, [FromBody]string value)
-      {
-      }
+            var mappedItem = mapper.Map<Item, ItemResource>(item);
 
-      // DELETE api/items/5
-      [HttpDelete("{id}")]
-      public void Delete(int id)
-      {
-      } */
+            return Ok(mappedItem);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateItem([FromBody] ItemResource itemResource)
+        {
+
+            if (!ModelState.IsValid)
+              return BadRequest();
+
+            var item = mapper.Map<ItemResource, Item>(itemResource);
+
+            context.Items.Add(item);
+            await context.SaveChangesAsync();
+
+            var mappedItem = mapper.Map<Item, ItemResource>(item);
+
+            return Ok(mappedItem);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateItem([FromBody] ItemResource itemResource, int id)
+        {
+            if (!ModelState.IsValid)
+              return BadRequest();
+
+            var itemInDb = await context.Items
+                .SingleOrDefaultAsync(i => i.Id == id);
+
+            if (itemInDb == null)
+              return NotFound();
+
+            mapper.Map<ItemResource, Item>(itemResource, itemInDb);
+            await context.SaveChangesAsync();
+
+            var mappedItem = mapper.Map<Item, ItemResource>(itemInDb);
+
+            return Ok(mappedItem);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteItem(int id)
+        {
+            var itemInDb = await context.Items.SingleOrDefaultAsync(i => i.Id == id);
+
+            if (itemInDb == null)
+              return NotFound();
+
+            context.Remove(itemInDb);
+            await context.SaveChangesAsync();
+
+            return Ok();
+        }
     }
 }
