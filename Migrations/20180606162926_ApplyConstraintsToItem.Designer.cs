@@ -11,9 +11,10 @@ using System;
 namespace marketmedia.Migrations
 {
     [DbContext(typeof(MarketMediaDbContext))]
-    partial class MarketMediaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180606162926_ApplyConstraintsToItem")]
+    partial class ApplyConstraintsToItem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -2,43 +2,56 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using marketmedia.Models;
+using marketmedia.Persistence;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace marketmedia.Controllers
 {
     [Route("api/[controller]")]
     public class ItemsController : Controller
     {
-        // GET api/items
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
 
-        // GET api/items/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+      private readonly MarketMediaDbContext context;
 
-        // POST api/items
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
+      public ItemsController(MarketMediaDbContext context)
+      {
+          this.context = context;
+      }
 
-        // PUT api/items/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
+      // GET api/items
+      [HttpGet]
+      public async Task<IEnumerable<Item>> GetItems()
+      {
+          var items = await context.Items.ToListAsync();
 
-        // DELETE api/items/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+          return items;
+      }
+
+      /* // GET api/items/5
+      [HttpGet("{id}")]
+      public string Get(int id)
+      {
+          return "value";
+      }
+
+      // POST api/items
+      [HttpPost]
+      public void Post([FromBody]string value)
+      {
+      }
+
+      // PUT api/items/5
+      [HttpPut("{id}")]
+      public void Put(int id, [FromBody]string value)
+      {
+      }
+
+      // DELETE api/items/5
+      [HttpDelete("{id}")]
+      public void Delete(int id)
+      {
+      } */
     }
 }
