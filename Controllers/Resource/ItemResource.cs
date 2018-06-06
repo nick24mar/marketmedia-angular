@@ -15,6 +15,8 @@ namespace marketmedia.Controllers.Resource
 
         public DateTime DatePosted { get; set; }
 
+        public string Category { get; set; }
+
         public int CategoryId { get; set; }
     }
 }

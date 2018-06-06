@@ -10,7 +10,8 @@ namespace marketmedia.Mapping
         public MappingProfile()
         {
             // From Domain To Resource
-            CreateMap<Item, ItemResource>();
+            CreateMap<Item, ItemResource>()
+              .ForMember(itemR => itemR.Category, opt => opt.MapFrom(item => item.Category.Name));
 
             //From Resource to Domain
             CreateMap<ItemResource, Item>()

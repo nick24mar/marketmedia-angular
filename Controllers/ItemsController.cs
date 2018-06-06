@@ -28,7 +28,7 @@ namespace marketmedia.Controllers
         [HttpGet]
         public async Task<IEnumerable<ItemResource>> GetItems()
         {
-            var items = await context.Items.ToListAsync();
+            var items = await context.Items.Include(i => i.Category).ToListAsync();
             var mappedItems = mapper.Map<List<Item>, List<ItemResource>>(items);
 
             return mappedItems;
@@ -37,7 +37,7 @@ namespace marketmedia.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetItem(int id)
         {
-            var item = await context.Items.SingleOrDefaultAsync(i => i.Id == id);
+            var item = await context.Items.Include(i => i.Category).SingleOrDefaultAsync(i => i.Id == id);
 
             if (item == null)
                 return NotFound();
