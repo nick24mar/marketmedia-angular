@@ -11,6 +11,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { CoreModule } from './core/core.module';
 import { MarketOptionsComponent } from './components/market-options/market-options.component';
 import { MarketItemsComponent } from './components/market-items/market-items.component';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { MarketItemsComponent } from './components/market-items/market-items.com
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    CoreModule
+    CoreModule,
+    SharedModule
   ],
   bootstrap: [AppComponent]
 })

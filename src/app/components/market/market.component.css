@@ -2,3 +2,8 @@
 .options {
   width: 13%;
 }
+
+.items {
+  background-color: #88858557;
+  border-radius: 0.3em;
+}
