@@ -10,9 +10,6 @@ export class HomeComponent implements OnInit {
 
   constructor(private itemService: ItemService) { }
 
-  ngOnInit() {
-    this.itemService.getItems()
-      .subscribe(items => console.log(items));
-  }
+  ngOnInit() {}
 
 }

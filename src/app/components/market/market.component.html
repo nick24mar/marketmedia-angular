@@ -7,7 +7,7 @@
   <div class="col-md-10">
 
     <div class="card-columns p-2 bg-light">
-      <app-market-items *ngFor="let item of items | async" [item]="item"></app-market-items>
+      <app-market-items *ngFor="let item of itemService.items | async" [item]="item"></app-market-items>
     </div>
 
   </div>
