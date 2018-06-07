@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace marketmedia.Controllers.Resource
 {
-    public class ItemResource
+    public class SaveItemResource
     {
         public int Id { get; set; }
 
@@ -15,7 +15,7 @@ namespace marketmedia.Controllers.Resource
 
         public DateTime DatePosted { get; set; }
 
-        public string Category { get; set; }
+        public int CategoryId { get; set; }
 
     }
 }

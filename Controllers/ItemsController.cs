@@ -48,13 +48,13 @@ namespace marketmedia.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateItem([FromBody] ItemResource itemResource)
+        public async Task<IActionResult> CreateItem([FromBody] SaveItemResource saveItemResource)
         {
 
             if (!ModelState.IsValid)
               return BadRequest();
 
-            var item = mapper.Map<ItemResource, Item>(itemResource);
+            var item = mapper.Map<SaveItemResource, Item>(saveItemResource);
 
             item.DatePosted = DateTime.Now;
             item.LastUpdated = DateTime.Now;
@@ -62,13 +62,16 @@ namespace marketmedia.Controllers
             context.Items.Add(item);
             await context.SaveChangesAsync();
 
+            item = await context.Items.Include(i => i.Category)
+                .SingleOrDefaultAsync(i => i.Id == item.Id);
+
             var mappedItem = mapper.Map<Item, ItemResource>(item);
 
             return Ok(mappedItem);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateItem([FromBody] ItemResource itemResource, int id)
+        public async Task<IActionResult> UpdateItem([FromBody] SaveItemResource saveItemResource, int id)
         {
             if (!ModelState.IsValid)
               return BadRequest();
@@ -79,9 +82,9 @@ namespace marketmedia.Controllers
             if (itemInDb == null)
               return NotFound();
 
-            itemResource.DatePosted = itemInDb.DatePosted;
+            saveItemResource.DatePosted = itemInDb.DatePosted;
             itemInDb.LastUpdated = DateTime.Now;
-            mapper.Map<ItemResource, Item>(itemResource, itemInDb);
+            mapper.Map<SaveItemResource, Item>(saveItemResource, itemInDb);
             await context.SaveChangesAsync();
 
             var mappedItem = mapper.Map<Item, ItemResource>(itemInDb);
