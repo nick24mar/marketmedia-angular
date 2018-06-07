@@ -12,6 +12,8 @@ namespace marketmedia.Mapping
             CreateMap<Item, ItemResource>()
               .ForMember(itemR => itemR.Category, opt => opt.MapFrom(item => item.Category.Name));
 
+            CreateMap<Category, CategoryResource>();
+
             //From Resource to Domain
             CreateMap<SaveItemResource, Item>()
               .ForMember(i => i.Id, opt => opt.Ignore());
