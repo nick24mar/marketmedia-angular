@@ -1,4 +1,8 @@
+import { Item } from './../../core/models/item';
 import { Component, OnInit } from '@angular/core';
+import { ItemService } from '../../core/services/item/item.service';
+import { Observable } from 'rxjs/Observable';
+import { CategoryService } from '../../core/services/category/category.service';
 
 @Component({
   selector: 'app-market',
@@ -7,9 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MarketComponent implements OnInit {
 
-  constructor() { }
+  items: Observable<Item[]>;
+
+  constructor(
+    private itemService: ItemService,
+    private categoryService: CategoryService
+  ) { }
 
   ngOnInit() {
+    this.items = this.itemService.getItems();
   }
 
 }

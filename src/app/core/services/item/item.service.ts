@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { Item } from '../../models/item';
 import { SaveItem } from '../../models/save-item';
 
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, map, tap, retry } from 'rxjs/operators';
 
 @Injectable()
 export class ItemService {
@@ -18,7 +18,10 @@ export class ItemService {
   }
 
   getItemById(id: number): Observable<Item> {
-    return this.http.get<Item>(`${this.url}/${id}`);
+    return this.http.get<Item>(`${this.url}/${id}`)
+      .pipe(
+        retry(3)
+      );
   }
 
   addNewItem(item: SaveItem): Observable<SaveItem> {

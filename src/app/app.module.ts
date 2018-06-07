@@ -9,6 +9,8 @@ import { HomeComponent } from './components/home/home.component';
 import { MarketComponent } from './components/market/market.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CoreModule } from './core/core.module';
+import { MarketOptionsComponent } from './components/market-options/market-options.component';
+import { MarketItemsComponent } from './components/market-items/market-items.component';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { CoreModule } from './core/core.module';
     AppComponent,
     HomeComponent,
     MarketComponent,
-    NavbarComponent
+    NavbarComponent,
+    MarketOptionsComponent,
+    MarketItemsComponent
   ],
   imports: [
     BrowserModule,

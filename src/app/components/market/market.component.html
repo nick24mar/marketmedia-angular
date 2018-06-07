@@ -1,3 +1,17 @@
-<p>
-  market works!
-</p>
+<div class="row">
+  <div class="col-md-2">
+
+    <app-market-options
+      class="options position-fixed">
+    </app-market-options>
+
+  </div>
+  <div class="col-md-10">
+
+    <app-market-items
+      *ngFor="let item of items | async"
+      [item]="item">
+    </app-market-items>
+
+  </div>
+</div>
