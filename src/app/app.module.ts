@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './components/home/home.component';
 import { MarketComponent } from './components/market/market.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { CoreModule } from './core/core.module';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CoreModule
   ],
   bootstrap: [AppComponent]
 })
