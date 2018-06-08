@@ -1,9 +1,10 @@
-
-<div class="card">
-  <img class="card-img-top" src="../../../assets/img/img-placeholder.jpg" alt="Card image cap">
-  <span class="badge badge-price">&#8369;{{item.price | number:'1.2'}}</span>
-  <div class="p-3 m-0">
-    <h5 class="card-title">{{item.name}}</h5>
-    <p class="card-text text-muted">{{item.datePosted | date}} | Pagadian City</p>
+<a [routerLink]="['/market/item/', item.id]" class="details-link">
+  <div class="card">
+    <img class="card-img-top" src="../../../assets/img/img-placeholder.jpg" alt="Card image cap">
+    <span class="badge badge-price">&#8369;{{item.price | number:'1.2'}}</span>
+    <div class="p-3 m-0">
+      <h5 class="card-title">{{item.name}}</h5>
+      <p class="card-text text-muted">{{item.datePosted | date}} | Pagadian City</p>
+    </div>
   </div>
-</div>
+</a>

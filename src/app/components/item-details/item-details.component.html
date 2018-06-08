@@ -1,0 +1,40 @@
+<div class="item-details-container">
+
+  <a [routerLink]="['/market']" class="nav-close">
+    <span aria-hidden="true">&times;</span>
+  </a>
+  <div class="item-details-content container">
+
+    <div class="row">
+      <div class="col-md-9">
+        <img src="../../../assets//img/img-placeholder.jpg" class="img-top" width="100%">
+      </div>
+      <div class="col-md-3">
+        <div class="container">
+          <p class="text-muted mt-3">Market > {{(item | async)?.category}}</p>
+          <hr>
+          <h4 class="card-title">{{(item | async)?.name}}</h4>
+          <p class="card-text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque expedita voluptates animi labore..
+          </p>
+          <p class="card-text text-muted">{{(item | async)?.datePosted | date}} | Pagadian City {{(item | async)?.datePosted | date:'shortTime'}}</p>
+          <span class="badge badge-dark badge-price">&#8369;{{(item | async)?.price | number:'1.2'}}</span>
+          <hr>
+          <h5>Seller information</h5>
+          <div class="user-info-flex">
+            <div class="user-img-flex-content">
+              <img src="../../../assets/img/user-default.png" alt="user" class="img-responsive img-user">
+            </div>
+            <div class="m-1 ml-3">
+              <span class="user-full-name">John Doe</span>
+              <p>Reputation: 8</p>
+            </div>
+          </div>
+
+          <button class="button" class="btn btn-primary btn-block">Contact now</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,46 @@
+
+.nav-close {
+  position: relative;
+  font-size: 2.3em;
+  text-decoration: none;
+  color: #d5e0ec;
+  left: 38em;
+  top: 75px;
+}
+
+.item-details-container {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: #000000b2; /* Black w/ opacity */
+}
+
+.item-details-content {
+  background-color: #fefefe;
+  margin: 6% auto; /* 15% from the top and centered */
+  padding: 0;
+  border-radius: 0.4em;
+}
+
+.user-info-flex {
+  display: flex;
+}
+
+.img-user {
+  width: 3.8em;
+  border-radius: 50%;
+  flex: 1;
+}
+
+.user-full-name {
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+.badge-price {
+  font-size: 1.2em;
+}

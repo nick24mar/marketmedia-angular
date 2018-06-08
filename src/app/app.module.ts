@@ -12,6 +12,7 @@ import { CoreModule } from './core/core.module';
 import { MarketOptionsComponent } from './components/market-options/market-options.component';
 import { MarketItemsComponent } from './components/market-items/market-items.component';
 import { SharedModule } from './shared/shared.module';
+import { ItemDetailsComponent } from './components/item-details/item-details.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { SharedModule } from './shared/shared.module';
     MarketComponent,
     NavbarComponent,
     MarketOptionsComponent,
-    MarketItemsComponent
+    MarketItemsComponent,
+    ItemDetailsComponent
   ],
   imports: [
     BrowserModule,
