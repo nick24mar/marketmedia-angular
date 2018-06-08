@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ItemService } from '../../core/services/item/item.service';
+import { ItemService } from '../core/services/item/item.service';
 
 @Component({
   selector: 'app-market',
@@ -8,9 +8,7 @@ import { ItemService } from '../../core/services/item/item.service';
 })
 export class MarketComponent implements OnInit {
 
-  constructor(
-    public itemService: ItemService
-  ) { }
+  constructor(public itemService: ItemService) { }
 
   ngOnInit() {
   }

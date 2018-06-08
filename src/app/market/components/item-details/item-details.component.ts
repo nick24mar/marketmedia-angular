@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { Item } from '../../core/models/item';
-import { ItemService } from '../../core/services/item/item.service';
+import { Item } from '../../../core/models/item';
+import { ItemService } from '../../../core/services/item/item.service';
 
 @Component({
   selector: 'app-item-details',
