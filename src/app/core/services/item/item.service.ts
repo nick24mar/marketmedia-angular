@@ -41,7 +41,14 @@ export class ItemService {
   }
 
   deleteItem(id: number) {
-    return this.http.delete<SaveItem>(`${this.url}/${id}`);
+    this.http.delete<SaveItem>(`${this.url}/${id}`)
+      .subscribe(
+        () => {
+          this.getItems();
+          this.router.navigate(['/market']);
+        },
+        (error) => this.handleError(error)
+      );
   }
 
   handleError(error): void {

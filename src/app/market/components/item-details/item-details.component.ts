@@ -11,7 +11,7 @@ import { ItemService } from '../../../core/services/item/item.service';
 })
 export class ItemDetailsComponent implements OnInit {
 
-  private itemId: number;
+  itemId: number;
   item: Item;
 
   constructor(
@@ -21,7 +21,7 @@ export class ItemDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.params.subscribe(uri => this.itemId = uri.id);
+    this.route.params.subscribe(query => this.itemId = query.id);
 
     this.itemService.getItemById(this.itemId)
       .subscribe(
@@ -32,12 +32,7 @@ export class ItemDetailsComponent implements OnInit {
 
   deleteItem(): void {
     if (confirm('Are you sure you want to delete this item?')) {
-      this.itemService.deleteItem(this.itemId)
-        .subscribe(
-          res => console.log(res),
-          (error) => this.itemService.handleError(error),
-          () => console.log(this.router.navigate(['/market']))
-        );
+      this.itemService.deleteItem(this.itemId);
     }
   }
 

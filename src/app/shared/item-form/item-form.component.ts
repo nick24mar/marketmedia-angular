@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CategoryService } from '../../core/services/category/category.service';
 import { Observable } from 'rxjs/Observable';
 import { Category } from '../../core/models/category';
@@ -15,6 +15,7 @@ export class ItemFormComponent implements OnInit {
 
   categories: Observable<Category[]>;
   itemForm: FormGroup;
+  @Input() itemId: number;
 
   constructor(
     private itemService: ItemService,
@@ -35,11 +36,27 @@ export class ItemFormComponent implements OnInit {
   onSubmit(): void {
     const item: SaveItem = this.itemForm.value;
 
-    this.itemService.addNewItem(item);
+    if (this.itemId === 0) {
+      this.itemService.addNewItem(item);
+    } else {
+      console.log('new item: ');
+      console.log(item);
+    }
+
     this.clear();
   }
 
   private formInit(): void {
+
+    if (this.itemId > 0) {
+      this.itemService.getItemById(this.itemId)
+        .subscribe(item => this.itemForm.setValue({
+          name: item.name,
+          price: item.price,
+          categoryId: 3
+        }));
+    }
+
     this.itemForm = this.fb.group({
       name: ['', Validators.required],
       price: ['', Validators.required],
