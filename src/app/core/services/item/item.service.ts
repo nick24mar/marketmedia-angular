@@ -36,4 +36,8 @@ export class ItemService {
     return this.http.put<SaveItem>(`${this.url}/${id}`, item);
   }
 
+  deleteItem(id: number) {
+    return this.http.delete<SaveItem>(`${this.url}/${id}`);
+  }
+
 }
