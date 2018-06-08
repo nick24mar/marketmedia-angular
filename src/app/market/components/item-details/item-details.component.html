@@ -41,14 +41,14 @@
       </div>
       <div class="col-md-3">
         <div class="container">
-          <p class="text-muted mt-3">Market > {{(item | async)?.category}}</p>
+          <p class="text-muted mt-3">Market > {{item?.category}}</p>
           <hr>
-          <h4 class="card-title">{{(item | async)?.name}}</h4>
+          <h4 class="card-title">{{item?.name}}</h4>
           <p class="card-text">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque expedita voluptates animi labore..
           </p>
-          <p class="card-text text-muted">{{(item | async)?.datePosted | date}} | Pagadian City {{(item | async)?.datePosted | date:'shortTime'}}</p>
-          <span class="badge badge-dark badge-price">&#8369;{{(item | async)?.price | number:'1.2'}}</span>
+          <p class="card-text text-muted">{{item?.datePosted | date}} | Pagadian City {{item?.datePosted | date:'shortTime'}}</p>
+          <span class="badge badge-dark badge-price">&#8369;{{item?.price | number:'1.2'}}</span>
           <hr>
           <h5>Seller information</h5>
           <div class="user-info-flex">

@@ -12,7 +12,7 @@ import { ItemService } from '../../../core/services/item/item.service';
 export class ItemDetailsComponent implements OnInit {
 
   private itemId: number;
-  item: Observable<Item>;
+  item: Item;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,7 +23,11 @@ export class ItemDetailsComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(uri => this.itemId = uri.id);
 
-    this.item = this.itemService.getItemById(this.itemId);
+    this.itemService.getItemById(this.itemId)
+      .subscribe(
+        (res => this.item = res),
+        (error => this.itemService.handleError(error))
+      );
   }
 
   deleteItem(): void {
@@ -31,7 +35,7 @@ export class ItemDetailsComponent implements OnInit {
       this.itemService.deleteItem(this.itemId)
         .subscribe(
           res => console.log(res),
-          (error) => console.log(error),
+          (error) => this.itemService.handleError(error),
           () => console.log(this.router.navigate(['/market']))
         );
     }

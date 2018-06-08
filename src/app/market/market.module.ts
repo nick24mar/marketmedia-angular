@@ -9,7 +9,7 @@ import { SharedModule } from '../shared/shared.module';
 
 const routes: Routes = [
   {
-    path: 'market',
+    path: '',
     component: MarketComponent,
     children: [
       { path: 'item/:id', component: ItemDetailsComponent }
